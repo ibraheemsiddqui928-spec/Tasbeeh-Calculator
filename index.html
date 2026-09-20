@@ -17,10 +17,44 @@
                 <option value="SubhanAllah |سُبْحَانَ ٱللَّٰهِ "> SubhanAllah</option>
                 <option value="Alhamdulillah|ٱلْحَمْدُ لِلَّٰهِ ">Alhamdulillah</option>
                 <option value="Allahu Akbar|ٱللَّٰهُ أَكْبَرُ ">Allahu Akbar</option>
+                <option value="Astaghfirullah|أَسْتَغْفِرُ ٱللَّٰهَ ">Astaghfirullah</option>
+                <option value="La ilaha illallah|لَا إِلَٰهَ إِلَّا ٱللَّٰهُ ">La ilaha illallah</option>
+            </select>
+
+            <select id="targetSelect" class="select-input">
+                <option value="33">Target:33</option>
+                <option value="100">Target:100</option>
+                <option value="1000">Target:1000</option>
+                <option value="0">Target:∞</option>
             </select>
         </div>
-    </div>
+        <div class="dhikr-display">
+            <div id="arabictext" class="arabic-text">سُبْحَانَ ٱللَّٰهِ </div>
+            <div id="transliterationText" class="transliteration">SubhanAllah</div>
+        </div>
+        <div class="Counter-ring-container">
+            <button id="countBtn" class="Counter-btn"> <span id="CountDisplay" class="count-number">0</span>
+         <span class="count-label">TAP</span>   
+            </button>
+        </div>
 
+        <div id="progressText" class="progress-indicator">Target:0/33</div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <span id="lapCount" class="stat-val">0</span>
+                <span class="stat-lbl">Laps Done</span>
+            </div>
+            <div class="stat-item">
+                <span id="totalCount" class="stat-val">0</span>
+                <span class="stat-lbl">Total Count</span>
+            </div>
+        </div>
+        <div class="action-btns">
+            <button id="resetBtn" class="btn-secondary">Reset Count</button>
+            <button id="resetTotalBtn" class="btn-secondary">Reset All</button>
+        </div>
+    </div>
+<script src="script.js"></script>
 
 
 
