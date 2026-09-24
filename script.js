@@ -59,5 +59,48 @@ function playCompletionSound(){
 }
 
 function updateDisplay(){
-    countDisplay.textContent
+    countDisplay.textContent = count;
+    totalCountDisplay.textContent = totalCount;
+    lapCountDisplay.textContent = laps;
+    const target = parseInt(targetSelect.value);
+    if (target > 0) {
+        progressText.textContent =  `Progress: \({count} /\){target}`;
+    } else { 
+        progressText.textContent =  `Unlimited Mode`;
+    }
 }
+
+function handleincrement() {
+    const target = parseInt(targetSelect.value);
+    count++;
+    totalCount++;
+    playClickSound();
+    if (navigator.vibrate) {
+        navigator.vibrate(30);
+    }
+
+    if (target > 0 && count === target) {
+        laps++;
+        playCompletionSound();
+        if (navigator.vibrate) {
+            navigator.vibrate([100, 50, 100]);
+        }
+        count = 0;
+    }
+    updateDisplay();
+}
+
+// Event Listeners
+countBtn.addEventListener('click', handleincrement);
+
+resetBtn.addEventListener('click', () => {
+    count = 0;
+    updateDisplay();
+});
+
+resetTotalBtn.addEventListener('click',() => {
+    count = 0;
+    totalCount = 0;
+    laps = 0;
+    updateDisplay();
+});
