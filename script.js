@@ -1,13 +1,12 @@
 let count = 0;
 let totalCount = 0;
 let laps = 0;
-let soundEnable = true;
+let soundEnabled = true;
 
 const countDisplay = document.getElementById('countDisplay');
 const totalCountDisplay = document.getElementById('totalCount');
 const lapCountDisplay = document.getElementById('lapCount');
 const progressText = document.getElementById('progressText');
-
 const dhikrSelect = document.getElementById('dhikrSelect');
 const targetSelect = document.getElementById('targetSelect');
 const arabicText = document.getElementById('arabicText');
@@ -17,15 +16,15 @@ const resetBtn = document.getElementById('resetBtn');
 const resetTotalBtn = document.getElementById('resetTotalBtn');
 const soundToggle = document.getElementById('soundToggle');
 
-//Web Audio API Sound Generator
+// Web Audio API Sound Generator
 function playClickSound() {
-    if(!soundEnable)return;
-    const audioCtx = new
-    (window.AudioContext || window.webkitAudioContext)();
+    if (!soundEnabled) return;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    osctype = 'sine';
-     osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, audioCtx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.05);
     
     gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
@@ -38,15 +37,15 @@ function playClickSound() {
     osc.stop(audioCtx.currentTime + 0.05);
 }
 
-function playCompletionSound(){
-    if(!soundEnable) return;
-    const audioCtx = new
-    (window.AudioContext || window.webkitAudioContext)();
+function playCompletionSound() {
+    if (!soundEnabled) return;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
+
     osc.type = 'triangle';
-    osc.frequency.setValueAtTime(440,audioCtx.currentTime);
-      osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1);
+    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+    osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1);
 
     gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
@@ -58,23 +57,26 @@ function playCompletionSound(){
     osc.stop(audioCtx.currentTime + 0.3);
 }
 
-function updateDisplay(){
+function updateDisplay() {
     countDisplay.textContent = count;
     totalCountDisplay.textContent = totalCount;
     lapCountDisplay.textContent = laps;
+
     const target = parseInt(targetSelect.value);
     if (target > 0) {
-        progressText.textContent =  `Progress: \({count} /\){target}`;
-    } else { 
-        progressText.textContent =  `Unlimited Mode`;
+        progressText.textContent = `Progress: \({count} /\){target}`;
+    } else {
+        progressText.textContent = `Unlimited Mode`;
     }
 }
 
-function handleincrement() {
+function handleIncrement() {
     const target = parseInt(targetSelect.value);
     count++;
     totalCount++;
+
     playClickSound();
+
     if (navigator.vibrate) {
         navigator.vibrate(30);
     }
@@ -87,18 +89,19 @@ function handleincrement() {
         }
         count = 0;
     }
+
     updateDisplay();
 }
 
 // Event Listeners
-countBtn.addEventListener('click', handleincrement);
+countBtn.addEventListener('click', handleIncrement);
 
 resetBtn.addEventListener('click', () => {
     count = 0;
     updateDisplay();
 });
 
-resetTotalBtn.addEventListener('click',() => {
+resetTotalBtn.addEventListener('click', () => {
     count = 0;
     totalCount = 0;
     laps = 0;
@@ -106,9 +109,9 @@ resetTotalBtn.addEventListener('click',() => {
 });
 
 dhikrSelect.addEventListener('change', (e) => {
-    const [transliterationText,arabic] = e.target.value.split('|');
+    const [transliteration, arabic] = e.target.value.split('|');
     arabicText.textContent = arabic;
-    transliterationText.textContent = transliterationText;
+    transliterationText.textContent = transliteration;
 });
 
 targetSelect.addEventListener('change', () => {
@@ -116,16 +119,16 @@ targetSelect.addEventListener('change', () => {
     updateDisplay();
 });
 
-soundToggle.addEventListener('click',() => {
-    soundEnable = !soundEnable;
-    soundToggle.textContent = soundEnable ? '🔊 Sound On' : '🔇 Sound Off';
+soundToggle.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    soundToggle.textContent = soundEnabled ? '🔊 Sound On' : '🔇 Sound Off';
 });
 
-// Keyboard Shourtcut (Spacebar)
+// Keyboard Shortcut (Spacebar)
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
         e.preventDefault();
-        handleincrement();
+        handleIncrement();
     }
 });
 
