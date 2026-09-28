@@ -104,3 +104,30 @@ resetTotalBtn.addEventListener('click',() => {
     laps = 0;
     updateDisplay();
 });
+
+dhikrSelect.addEventListener('change', (e) => {
+    const [transliterationText,arabic] = e.target.value.split('|');
+    arabicText.textContent = arabic;
+    transliterationText.textContent = transliterationText;
+});
+
+targetSelect.addEventListener('change', () => {
+    count = 0;
+    updateDisplay();
+});
+
+soundToggle.addEventListener('click',() => {
+    soundEnable = !soundEnable;
+    soundToggle.textContent = soundEnable ? '🔊 Sound On' : '🔇 Sound Off';
+});
+
+// Keyboard Shourtcut (Spacebar)
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+        e.preventDefault();
+        handleincrement();
+    }
+});
+
+// Initial Render
+updateDisplay();
