@@ -57,3 +57,65 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
+
+select, button {
+    outline: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+
+.select-input {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 14px;
+    width: 100%;
+}
+
+.dhikr-display {
+    background-color: var(--bg-color);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.arabic-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-family: "Traditional Arabic", "Amiri", serif;
+}
+
+.transliteration {
+    font-size: 1rem;
+    color: var(--muted-color);
+}
+
+.counter-ring-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-btn {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle,#10b981 0%, #047857 100%);
+    border: none;
+    color: white;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+    transition: transform 0.1s ease, box-shadow 0.1 ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
