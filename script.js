@@ -64,7 +64,7 @@ function updateDisplay() {
 
     const target = parseInt(targetSelect.value);
     if (target > 0) {
-        progressText.textContent = `Progress: \({count} /\){target}`;
+        progressText.textContent = `Progress: ${count} / ${target}`;
     } else {
         progressText.textContent = `Unlimited Mode`;
     }

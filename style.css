@@ -1,18 +1,18 @@
 :root {
-    background-color: #0f172a;
-    card-bg: #1e293b;
-    primary: #10b981;
-    primary-hover: #059669;
-    text-color: #f8fafc;
-    muted-color: #94a3b8;
-    border-color: #334155;
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --primary: #10b981;
+    --primary-hover: #059669;
+    --text-color: #f8fafc;
+    --muted-color: #94a3b8;
+    --border-color: #334155;
 }
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 body {
@@ -32,8 +32,7 @@ body {
     padding: 32px 24px;
     width: 100%;
     max-width: 420px;
-    box-shadow: 0 20px 25px -5px;
-    rgba(0,0,0,0.5);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -107,11 +106,11 @@ select, button {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle,#10b981 0%, #047857 100%);
+    background: radial-gradient(circle, #10b981 0%, #047857 100%);
     border: none;
     color: white;
     box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
-    transition: transform 0.1s ease, box-shadow 0.1 ease;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -152,11 +151,41 @@ select, button {
     border: 1px solid var(--border-color);
 }
 
-.stats-row {
+.stat-item {
     display: flex;
-    justify-content: space-around;
-    background-color: var(--bg-color);
-    padding: 12px;
-    border-radius: 12px;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-val {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.stat-lbl {
+    font-size: 0.75rem;
+    color: var(--muted-color);
+}
+
+.action-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-secondary {
+    background-color: transparent;
     border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+}
+
+.sound-btn {
+    padding: 6px 12px; 
+    border-radius: 20px;
 }
