@@ -119,3 +119,44 @@ select, button {
     user-select: none;
 }
 
+.counter-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.count-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.count-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.progress-indicator {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--bg-color);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--bg-color);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
